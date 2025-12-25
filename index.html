@@ -2,233 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QRYO — Quantum Job Aggregator</title>
-
-  <meta name="description" content="Run quantum jobs from a single, vendor-agnostic API. No infrastructure. No lock-in." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QRYO – Quantum Job Aggregator</title>
 
   <style>
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
-      background: #0b0e14;
-      color: #e6e6e6;
-      line-height: 1.6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(1200px 600px at top, #0b1a2a, #020409);
+      color: #e6edf3;
     }
-
-    a { color: #7aa2ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
     .container {
       max-width: 960px;
-      margin: auto;
-      padding: 2.5rem 1.25rem;
-    }
-
-    header {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 1.6rem;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      max-width: 700px;
-      color: #cfd3ff;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: #9aa4ff;
-      margin-bottom: 2rem;
-    }
-
-    .cta {
-      margin-top: 2rem;
-    }
-
-    .cta a {
-      display: inline-block;
-      padding: 0.75rem 1.4rem;
-      border: 1px solid #7aa2ff;
-      border-radius: 6px;
-      font-weight: 500;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: #121726;
-      border: 1px solid #1e2440;
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-      color: #ffffff;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #b6bcff;
-    }
-
-    .trust {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid #1e2440;
-      font-size: 0.9rem;
-      color: #9aa4ff;
-    }
-
-    footer {
-      margin-top: 3rem;
-      padding: 1.5rem 1rem;
+      margin: 0 auto;
+      padding: 96px 24px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #6f76b8;
     }
+    h1 { font-size: 48px; margin-bottom: 16px; letter-spacing: -1px; }
+    h1 span { color: #6ee7ff; }
+    p.lead { font-size: 20px; color: #9fb3c8; margin-bottom: 48px; }
+    .actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      padding: 14px 22px; border-radius: 8px; border: none;
+      font-size: 16px; cursor: pointer; text-decoration: none; font-weight: 600;
+    }
+    .btn-primary { background: #6ee7ff; color: #020409; }
+    .btn-secondary { background: transparent; color: #6ee7ff; border: 1px solid #1f3a4a; }
+    footer { margin-top: 120px; font-size: 14px; color: #7d8b99; }
+    footer span { display: block; margin-top: 6px; }
+
+    /* Honeypot: kullanıcı görmez */
+    .hp { position: absolute; left: -10000px; top: -10000px; }
   </style>
 </head>
 
 <body>
-
   <div class="container">
-    <!-- HERO -->
-    <header>
-      <h1>Start Quantum Discovery</h1>
-      <p class="subtitle">
-        Run quantum jobs from a single, vendor-agnostic API.
-      </p>
+    <h1>Start <span>QuAntUm</span> discovery.</h1>
 
-      <p>
-        QRYO is a lightweight quantum job aggregator that lets developers,
-        researchers, and teams submit quantum or quantum-inspired workloads
-        without managing quantum infrastructure.
-      </p>
+    <p class="lead">
+      Run quantum and quantum-inspired jobs from a single API.<br/>
+      No vendor lock-in. No infrastructure overhead.
+    </p>
 
-      <div class="cta">
-        <a href="https://qryo-backend.onrender.com/docs" target="_blank">
-          View API Docs →
-        </a>
-      </div>
-    </header>
+    <div class="actions">
+      <a href="https://qryo-backend.onrender.com/docs" class="btn btn-primary" target="_blank" rel="noopener">
+        View API Docs
+      </a>
+      <a href="https://qryo-backend.onrender.com" class="btn btn-secondary" target="_blank" rel="noopener">
+        Backend Status
+      </a>
+    </div>
 
-    <!-- WHAT IT DOES -->
-    <section>
-      <h2>What QRYO Does</h2>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Single API</h3>
-          <p>
-            Submit jobs to multiple quantum backends through one consistent API.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Vendor-Agnostic</h3>
-          <p>
-            No lock-in. Route jobs across simulators or quantum-ready providers.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Infrastructure-Free</h3>
-          <p>
-            No hardware setup, no SDK juggling, no environment headaches.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>API-First</h3>
-          <p>
-            Designed for developers. JSON in, results out.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- USE CASES -->
-    <section>
-      <h2>Who Is This For?</h2>
-      <p>
-        Researchers experimenting with quantum algorithms, developers building
-        quantum-aware applications, and teams who want to explore quantum
-        computation without committing to a single provider.
-      </p>
-    </section>
-
-    <!-- TRUST & CREDIBILITY -->
-    <section class="trust">
-      <p>
-        <strong>Who is behind this?</strong><br />
-        Built by an independent engineering team focused on practical quantum infrastructure.
-      </p>
-
-      <p>
-        <strong>Why trust this?</strong><br />
-        API-first. Privacy-first. No tracking. No spam.
-      </p>
-    </section>
+    <footer>
+      Built by an independent founder.
+      <span>Privacy-first · No tracking cookies · No spam</span>
+      <span>Contact: hello@qryo.dev</span>
+    </footer>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    Built by QRYO Engineering · Privacy-first ·
-    <a href="mailto:hello@qryo.dev">hello@qryo.dev</a>
-  </footer>
-<script>
-  // Basic client-side analytics (privacy-first)
-  (function () {
-    const payload = {
-      event: "page_view",
-      path: window.location.pathname,
-      referrer: document.referrer || null,
-      ua: navigator.userAgent
-    };
+  <!-- Honeypot input (bots doldurur) -->
+  <input type="text" class="hp" id="company" name="company" value="">
 
-    fetch("https://qryo-backend.onrender.com/track", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    }).catch(() => {});
-  })();
-
-  // Track API docs click
-  document.addEventListener("DOMContentLoaded", () => {
-    const link = document.querySelector('a[href*="/docs"]');
-    if (!link) return;
-
-    link.addEventListener("click", () => {
+  <!-- Minimal, privacy-first analytics -->
+  <script>
+    function sendTrack(eventName, extra) {
+      const honeypot = document.getElementById("company")?.value || "";
       fetch("https://qryo-backend.onrender.com/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          event: "docs_click",
-          path: window.location.pathname
+          event: eventName,
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          ua: navigator.userAgent,
+          hp: honeypot,
+          ...extra
         })
       }).catch(() => {});
+    }
+
+    // Page view
+    sendTrack("page_view");
+
+    // Docs click
+    document.addEventListener("DOMContentLoaded", () => {
+      const docsLink = document.querySelector('a[href*="/docs"]');
+      if (docsLink) {
+        docsLink.addEventListener("click", () => sendTrack("docs_click"));
+      }
     });
-  });
-</script>
+  </script>
 </body>
 </html>
