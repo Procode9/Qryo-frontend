@@ -2,124 +2,302 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Qryo — Serverless Quantum Jobs</title>
+  <title>Qryo — Serverless Quantum Job API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qryo is a serverless quantum job API that lets developers submit quantum workloads through a simple REST interface." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f680.svg">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    :root {
+      --bg: #0b0f19;
+      --panel: #11162a;
+      --text: #e6e9f2;
+      --muted: #9aa3b2;
+      --accent: #4f7cff;
+      --accent-2: #6ae3ff;
+      --border: #1f2545;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #0b1a2a, #020409);
-      color: #e6edf3;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -200px, #18204a, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    header {
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    header span {
+      color: var(--accent-2);
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 20px;
-      text-align: center;
+      padding: 80px 24px;
     }
 
-    h1 {
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero h2 {
       font-size: 48px;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
     }
 
-    p {
+    .hero p {
       font-size: 18px;
-      color: #9fb3c8;
-      margin-bottom: 40px;
+      color: var(--muted);
+      margin-bottom: 32px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
+    .badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .panel {
+      background: linear-gradient(180deg, #13193a, var(--panel));
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 32px;
-      max-width: 480px;
-      margin: 0 auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .panel h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .panel p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
     }
 
     input {
-      width: 100%;
-      padding: 14px;
+      background: #0c1022;
+      border: 1px solid var(--border);
       border-radius: 10px;
-      border: none;
-      font-size: 16px;
-      margin-bottom: 12px;
-      outline: none;
+      padding: 14px 16px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: #6f7895;
     }
 
     button {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       border: none;
-      background: #4f8cff;
-      color: white;
-      font-size: 16px;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
+      color: #0b0f19;
     }
 
-    button:hover {
-      background: #3a74e8;
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
-    .msg {
-      margin-top: 14px;
+    .status {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    section.features {
+      margin-top: 120px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .feature h4 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .feature p {
+      color: var(--muted);
       font-size: 14px;
     }
 
     footer {
-      margin-top: 80px;
-      font-size: 13px;
-      color: #6b7f99;
+      margin-top: 140px;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      section.features {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Qryo</h1>
-    <p>
-      Serverless quantum job submission API.<br/>
-      One endpoint. Any provider. Pay-per-use.
-    </p>
+  <header>
+    <h1>Qryo<span>.</span></h1>
+    <a href="https://qryo-backend.onrender.com/docs" target="_blank">API Docs</a>
+  </header>
 
-    <div class="card">
-      <h3>Join the early access</h3>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Serverless Quantum Job Submission API</h2>
+        <p>
+          Qryo lets developers, researchers and startups submit quantum-inspired
+          or quantum-ready workloads through a single, simple REST API.
+          No infrastructure. No vendor lock-in.
+        </p>
 
-      <input
-        id="email"
-        type="email"
-        placeholder="you@company.com"
-        required
-      />
+        <div class="badges">
+          <div class="badge">FastAPI</div>
+          <div class="badge">Quantum-Ready</div>
+          <div class="badge">Pay-Per-Use</div>
+          <div class="badge">Vendor-Agnostic</div>
+        </div>
+      </div>
 
-      <button onclick="joinWaitlist()">Request Access</button>
+      <div class="panel">
+        <h3>Join the early access</h3>
+        <p>
+          We are onboarding early users and research partners.
+          Leave your email to get access when we open.
+        </p>
 
-      <div class="msg" id="msg"></div>
-    </div>
+        <form id="waitlistForm">
+          <input
+            type="email"
+            id="email"
+            placeholder="you@company.com"
+            required
+          />
+          <button type="submit">Join waitlist</button>
+          <div class="status" id="status"></div>
+        </form>
+      </div>
+    </section>
 
-    <footer>
-      © 2025 Qryo — Quantum infrastructure, abstracted.
-    </footer>
-  </div>
+    <section class="features">
+      <div class="feature">
+        <h4>Single API</h4>
+        <p>
+          Submit, monitor and retrieve quantum jobs using one unified REST API.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h4>Provider Routing</h4>
+        <p>
+          Abstracted provider layer — simulators today, quantum hardware tomorrow.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h4>Built for Scale</h4>
+        <p>
+          Stateless, serverless and designed for research teams and SaaS platforms.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Qryo — Experimental platform. Not production quantum hardware.
+  </footer>
 
   <script>
-    async function joinWaitlist() {
-      const email = document.getElementById("email").value;
-      const msg = document.getElementById("msg");
+    const API_BASE = "https://qryo-backend.onrender.com";
 
-      msg.textContent = "Sending...";
-      msg.style.color = "#9fb3c8";
+    const form = document.getElementById("waitlistForm");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.textContent = "Submitting...";
+      status.style.color = "#9aa3b2";
+
+      const email = document.getElementById("email").value;
 
       try {
-        const res = await fetch("https://qryo-backend.onrender.com/waitlist", {
+        const res = await fetch(API_BASE + "/waitlist", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json"
+          },
           body: JSON.stringify({ email })
         });
 
@@ -127,15 +305,14 @@
           throw new Error("Request failed");
         }
 
-        msg.textContent = "✅ You’re on the list!";
-        msg.style.color = "#6ee7b7";
-        document.getElementById("email").value = "";
-
-      } catch (e) {
-        msg.textContent = "❌ Something went wrong. Try again.";
-        msg.style.color = "#f87171";
+        status.textContent = "You’re on the list 🚀";
+        status.style.color = "#6ae3ff";
+        form.reset();
+      } catch (err) {
+        status.textContent = "Something went wrong. Try again.";
+        status.style.color = "#ff6b6b";
       }
-    }
+    });
   </script>
 
 </body>
