@@ -6,260 +6,227 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <style>
-    :root {
-      --bg: #0b0b0b;
-      --card: #121212;
-      --text: #ffffff;
-      --muted: #b3b3b3;
-      --border: #2a2a2a;
-      --accent: #00ff9c;
-      --danger: #ff4d4f;
+    * {
+      box-sizing: border-box;
     }
-
-    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      padding: 32px 20px;
+      background: radial-gradient(circle at top, #111 0%, #000 60%);
+      color: #ffffff;
     }
 
     .container {
-      max-width: 760px;
-      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
       text-align: center;
     }
 
     h1 {
       font-size: 56px;
-      margin: 0 0 12px;
-      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
     }
 
-    .subtitle {
+    h1 span {
+      color: #00ff9c;
+    }
+
+    p.subtitle {
       font-size: 20px;
-      color: var(--muted);
-      margin-bottom: 28px;
+      color: #b3b3b3;
+      max-width: 720px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      margin-bottom: 36px;
+    .waitlist {
+      margin-top: 40px;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #666;
+    .waitlist form {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .dot.live {
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
+    .waitlist input {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: none;
+      width: 280px;
+      font-size: 16px;
+      outline: none;
     }
 
-    .dot.down {
-      background: var(--danger);
-      box-shadow: 0 0 8px var(--danger);
+    .waitlist button {
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: none;
+      background: #00ff9c;
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .cards {
+    .waitlist button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 255, 156, 0.25);
+    }
+
+    #waitlist-msg {
+      margin-top: 16px;
+      font-size: 15px;
+      color: #00ff9c;
+    }
+
+    .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
+      gap: 32px;
+      margin-top: 100px;
       text-align: left;
     }
 
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
+    .feature {
+      background: #0b0b0b;
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid #1a1a1a;
     }
 
-    .card p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--muted);
+    .feature h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #b3b3b3;
+      font-size: 15px;
       line-height: 1.5;
     }
 
-    /* CTA */
-    .cta {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 40px;
-    }
-
-    .cta h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-
-    .cta p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .cta form {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .cta input {
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: #0f0f0f;
-      color: var(--text);
-      min-width: 220px;
-    }
-
-    .cta button {
-      padding: 12px 18px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      background: var(--accent);
-      color: #000;
-      font-weight: 600;
-    }
-
-    /* API Showcase */
-    .api {
-      background: #0f0f0f;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: left;
-      margin-bottom: 32px;
-    }
-
-    .api h3 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    pre {
-      background: #000;
-      border-radius: 12px;
-      padding: 16px;
-      font-size: 13px;
-      overflow-x: auto;
-      color: #dcdcdc;
-    }
-
     .footer {
-      font-size: 13px;
-      color: var(--muted);
-      opacity: 0.8;
+      margin-top: 120px;
+      padding: 32px 0;
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #00ff9c;
+      text-decoration: none;
+      margin-left: 8px;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Qryo</h1>
-  <div class="subtitle">
-    Programmable access to next-generation compute.
-  </div>
+  <div class="container">
+    <h1>
+      Programmable access to<br/>
+      <span>next-generation compute</span>
+    </h1>
 
-  <!-- Backend Status -->
-  <div class="badge">
-    <span id="status-dot" class="dot"></span>
-    <span id="status-text">Checking backend…</span>
-  </div>
+    <p class="subtitle">
+      Qryo is an API-first platform for running advanced optimization and
+      compute workloads across emerging infrastructures — starting simple,
+      scaling fast.
+    </p>
 
-  <!-- Value -->
-  <div class="cards">
-    <div class="card">
-      <h3>What</h3>
-      <p>Abstract complex compute systems into clean, production-ready APIs.</p>
+    <!-- WAITLIST -->
+    <div class="waitlist">
+      <form id="waitlist-form">
+        <input
+          type="email"
+          id="email"
+          placeholder="you@company.com"
+          required
+        />
+        <button type="submit">Request access</button>
+      </form>
+      <div id="waitlist-msg"></div>
     </div>
-    <div class="card">
-      <h3>Why</h3>
-      <p>Powerful infrastructure shouldn’t require infrastructure teams.</p>
+
+    <!-- FEATURES -->
+    <div class="features">
+      <div class="feature">
+        <h3>API-First</h3>
+        <p>
+          Everything is programmable. No dashboards required to get started.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>Pay-Per-Use</h3>
+        <p>
+          Usage-based pricing aligned with actual compute execution.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>Future-Ready</h3>
+        <p>
+          Designed to abstract next-gen compute before it becomes mainstream.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>Minimal Surface</h3>
+        <p>
+          No heavy frameworks. No noise. Just what matters.
+        </p>
+      </div>
     </div>
-    <div class="card">
-      <h3>For whom</h3>
-      <p>Builders and researchers shipping fast with minimal overhead.</p>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      Infrastructure live · API-first · Iterating fast
+      <a href="/docs.html">Docs</a>
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="cta">
-    <h2>Get early access</h2>
-    <p>Join the private rollout. No spam. No noise.</p>
-    <form onsubmit="event.preventDefault(); alert('Thanks! You are on the list.');">
-      <input type="email" placeholder="you@company.com" required />
-      <button type="submit">Request access</button>
-    </form>
-  </div>
+  <!-- SCRIPT -->
+  <script>
+    const BACKEND_URL = "https://qryo-backend.onrender.com";
 
-  <!-- API Showcase -->
-  <div class="api">
-    <h3>Example API</h3>
-    <pre>
-POST /v1/jobs
-Authorization: Bearer YOUR_API_KEY
+    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-{
-  "type": "optimization",
-  "provider": "cloud-quantum",
-  "payload": {
-    "nodes": 128,
-    "constraints": 42
-  }
-}
-    </pre>
-  </div>
+      const email = document.getElementById("email").value;
+      const msg = document.getElementById("waitlist-msg");
 
-  <div class="footer">
-    Infrastructure live · API-first · Iterating fast
-  </div>
-</div>
+      msg.innerText = "Submitting...";
 
-<script>
-const BACKEND_URL = "https://qryo-backend.onrender.com";
+      try {
+        const res = await fetch(`${BACKEND_URL}/v1/waitlist`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email })
+        });
 
-async function checkBackend() {
-  try {
-    const res = await fetch(BACKEND_URL);
-    if (res.ok) {
-      document.getElementById("status-dot").classList.add("live");
-      document.getElementById("status-text").innerText = "Backend live";
-    } else throw new Error();
-  } catch {
-    document.getElementById("status-dot").classList.add("down");
-    document.getElementById("status-text").innerText = "Backend offline";
-  }
-}
+        const data = await res.json();
 
-checkBackend();
-</script>
+        if (!res.ok) {
+          msg.innerText = data.detail || "Something went wrong.";
+          return;
+        }
+
+        msg.innerText = "You're on the waitlist 🚀";
+      } catch (err) {
+        msg.innerText = "Network error. Please try again.";
+      }
+    });
+  </script>
 
 </body>
 </html>
