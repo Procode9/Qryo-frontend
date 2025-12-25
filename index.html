@@ -2,175 +2,238 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Qryo – Early Access</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start QuAntUm Discovery</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Join the Qryo waitlist. The next generation platform is coming soon." />
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Discover early-stage signals before they become obvious. Start QuAntUm Discovery surfaces what matters before markets notice.">
 
   <style>
+    :root {
+      --bg: #0b0e14;
+      --fg: #e6e8ee;
+      --muted: #9aa3b2;
+      --accent: #6cf2c2;
+      --border: #1f2430;
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: #e5e7eb;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 520px;
-      width: 100%;
-      padding: 32px;
-      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    header {
+      margin-bottom: 96px;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 48px;
     }
 
     h1 {
-      font-size: 40px;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
       line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #08110d;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    section {
+      margin-bottom: 96px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
       margin-bottom: 16px;
-      color: #ffffff;
     }
 
     p {
-      font-size: 16px;
-      color: #9ca3af;
-      margin-bottom: 32px;
-    }
-
-    form {
-      display: flex;
-      gap: 12px;
+      max-width: 760px;
+      color: var(--muted);
       margin-bottom: 16px;
     }
 
-    input[type="email"] {
-      flex: 1;
-      padding: 14px 16px;
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .feature {
+      padding: 24px;
+      border: 1px solid var(--border);
       border-radius: 8px;
-      border: none;
-      outline: none;
-      font-size: 15px;
+      background: #0f1420;
     }
 
-    button {
-      padding: 14px 20px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: white;
-    }
-
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .message {
-      font-size: 14px;
-      margin-top: 12px;
-    }
-
-    .success {
-      color: #22c55e;
-    }
-
-    .error {
-      color: #ef4444;
+    .feature h3 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      color: var(--fg);
     }
 
     footer {
-      margin-top: 40px;
-      font-size: 13px;
-      color: #6b7280;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer span {
+      color: var(--accent);
     }
   </style>
 </head>
+
 <body>
-
   <div class="container">
-    <h1>Build faster.<br/>Think clearer.</h1>
-    <p>
-      Qryo is a next-generation platform designed to simplify complex workflows.
-      We’re launching soon. Join the early access list.
-    </p>
 
-    <form id="waitlist-form">
-      <input
-        type="email"
-        id="email"
-        placeholder="you@example.com"
-        required
-      />
-      <button type="submit" id="submit-btn">
-        Join
-      </button>
-    </form>
+    <!-- HERO -->
+    <header>
+      <div class="logo">START QUANTUM</div>
 
-    <div id="message" class="message"></div>
+      <h1>
+        Start QuAntUm Discovery
+      </h1>
 
+      <p class="subtitle">
+        Discover what matters <strong>before it becomes obvious</strong>.
+        <br />
+        A signal-first platform for identifying early-stage opportunities
+        long before markets, trends, or competitors notice them.
+      </p>
+
+      <a href="#early-access" class="cta">Get Early Access</a>
+    </header>
+
+    <!-- WHY -->
+    <section>
+      <h2>Why it exists</h2>
+
+      <p>
+        Most platforms analyze the <strong>present</strong>.
+        Most decisions are based on the <strong>past</strong>.
+      </p>
+
+      <p>
+        Start QuAntUm is built for the moment <em>before both</em> —
+        when signals are still weak, unnamed, and mispriced.
+      </p>
+    </section>
+
+    <!-- WHAT MAKES IT DIFFERENT -->
+    <section>
+      <h2>What makes it different</h2>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Early Signal Detection</h3>
+          <p>
+            Surface weak signals before they evolve into obvious trends
+            or crowded markets.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>Noise-to-Insight Filtering</h3>
+          <p>
+            Remove hype and repetition.
+            Focus only on signals that actually compound.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>Pre-Market Discovery</h3>
+          <p>
+            Explore opportunities before they are named,
+            categorized, or monetized.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section>
+      <h2>Who it’s for</h2>
+
+      <p>
+        Builders, founders, investors, and researchers who care about
+        <strong>being early for the right reasons</strong>,
+        not fast for the wrong ones.
+      </p>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section>
+      <h2>Core philosophy</h2>
+
+      <p>
+        <em>
+          Discovery is not about predicting the future.
+          <br />
+          It’s about recognizing it early enough to act.
+        </em>
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <section id="early-access">
+      <h2>Join the Discovery Layer</h2>
+
+      <p>
+        Get early access and help shape how future opportunities
+        are discovered.
+      </p>
+
+      <a href="#" class="cta">Request Access</a>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-      © 2025 Qryo. All rights reserved.
+      <p>
+        © 2025 <span>Start QuAntUm</span> — Discovery before it’s obvious.
+      </p>
     </footer>
+
   </div>
-
-  <script>
-    const API_URL = "https://qryo-backend.onrender.com/waitlist";
-
-    const form = document.getElementById("waitlist-form");
-    const emailInput = document.getElementById("email");
-    const messageDiv = document.getElementById("message");
-    const button = document.getElementById("submit-btn");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      messageDiv.textContent = "";
-      button.disabled = true;
-
-      try {
-        const res = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: emailInput.value
-          })
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          throw new Error(data.detail || "Something went wrong");
-        }
-
-        messageDiv.textContent = "You’re on the list 🚀";
-        messageDiv.className = "message success";
-        emailInput.value = "";
-
-      } catch (err) {
-        messageDiv.textContent = err.message;
-        messageDiv.className = "message error";
-      } finally {
-        button.disabled = false;
-      }
-    });
-  </script>
-
 </body>
 </html>
