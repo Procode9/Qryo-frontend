@@ -2,230 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Qryo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qryo — Serverless Quantum Jobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #111 0%, #000 60%);
-      color: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #0b1a2a, #020409);
+      color: #e6edf3;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 80px 20px;
       text-align: center;
     }
 
     h1 {
-      font-size: 56px;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -1px;
+      font-size: 48px;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
     }
 
-    h1 span {
-      color: #00ff9c;
+    p {
+      font-size: 18px;
+      color: #9fb3c8;
+      margin-bottom: 40px;
     }
 
-    p.subtitle {
-      font-size: 20px;
-      color: #b3b3b3;
-      max-width: 720px;
-      margin: 0 auto 48px;
-      line-height: 1.6;
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 32px;
+      max-width: 480px;
+      margin: 0 auto;
     }
 
-    .waitlist {
-      margin-top: 40px;
-    }
-
-    .waitlist form {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .waitlist input {
-      padding: 14px 16px;
+    input {
+      width: 100%;
+      padding: 14px;
       border-radius: 10px;
       border: none;
-      width: 280px;
       font-size: 16px;
+      margin-bottom: 12px;
       outline: none;
     }
 
-    .waitlist button {
-      padding: 14px 22px;
+    button {
+      width: 100%;
+      padding: 14px;
       border-radius: 10px;
       border: none;
-      background: #00ff9c;
-      color: #000;
+      background: #4f8cff;
+      color: white;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .waitlist button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(0, 255, 156, 0.25);
+    button:hover {
+      background: #3a74e8;
     }
 
-    #waitlist-msg {
-      margin-top: 16px;
-      font-size: 15px;
-      color: #00ff9c;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      margin-top: 100px;
-      text-align: left;
-    }
-
-    .feature {
-      background: #0b0b0b;
-      border-radius: 16px;
-      padding: 28px;
-      border: 1px solid #1a1a1a;
-    }
-
-    .feature h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      color: #b3b3b3;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .footer {
-      margin-top: 120px;
-      padding: 32px 0;
+    .msg {
+      margin-top: 14px;
       font-size: 14px;
-      color: #666;
-      text-align: center;
     }
 
-    .footer a {
-      color: #00ff9c;
-      text-decoration: none;
-      margin-left: 8px;
+    footer {
+      margin-top: 80px;
+      font-size: 13px;
+      color: #6b7f99;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>
-      Programmable access to<br/>
-      <span>next-generation compute</span>
-    </h1>
-
-    <p class="subtitle">
-      Qryo is an API-first platform for running advanced optimization and
-      compute workloads across emerging infrastructures — starting simple,
-      scaling fast.
+    <h1>Qryo</h1>
+    <p>
+      Serverless quantum job submission API.<br/>
+      One endpoint. Any provider. Pay-per-use.
     </p>
 
-    <!-- WAITLIST -->
-    <div class="waitlist">
-      <form id="waitlist-form">
-        <input
-          type="email"
-          id="email"
-          placeholder="you@company.com"
-          required
-        />
-        <button type="submit">Request access</button>
-      </form>
-      <div id="waitlist-msg"></div>
+    <div class="card">
+      <h3>Join the early access</h3>
+
+      <input
+        id="email"
+        type="email"
+        placeholder="you@company.com"
+        required
+      />
+
+      <button onclick="joinWaitlist()">Request Access</button>
+
+      <div class="msg" id="msg"></div>
     </div>
 
-    <!-- FEATURES -->
-    <div class="features">
-      <div class="feature">
-        <h3>API-First</h3>
-        <p>
-          Everything is programmable. No dashboards required to get started.
-        </p>
-      </div>
-
-      <div class="feature">
-        <h3>Pay-Per-Use</h3>
-        <p>
-          Usage-based pricing aligned with actual compute execution.
-        </p>
-      </div>
-
-      <div class="feature">
-        <h3>Future-Ready</h3>
-        <p>
-          Designed to abstract next-gen compute before it becomes mainstream.
-        </p>
-      </div>
-
-      <div class="feature">
-        <h3>Minimal Surface</h3>
-        <p>
-          No heavy frameworks. No noise. Just what matters.
-        </p>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      Infrastructure live · API-first · Iterating fast
-      <a href="/docs.html">Docs</a>
-    </div>
+    <footer>
+      © 2025 Qryo — Quantum infrastructure, abstracted.
+    </footer>
   </div>
 
-  <!-- SCRIPT -->
   <script>
-    const BACKEND_URL = "https://qryo-backend.onrender.com";
-
-    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-
+    async function joinWaitlist() {
       const email = document.getElementById("email").value;
-      const msg = document.getElementById("waitlist-msg");
+      const msg = document.getElementById("msg");
 
-      msg.innerText = "Submitting...";
+      msg.textContent = "Sending...";
+      msg.style.color = "#9fb3c8";
 
       try {
-        const res = await fetch(`${BACKEND_URL}/v1/waitlist`, {
+        const res = await fetch("https://qryo-backend.onrender.com/waitlist", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email })
         });
 
-        const data = await res.json();
-
         if (!res.ok) {
-          msg.innerText = data.detail || "Something went wrong.";
-          return;
+          throw new Error("Request failed");
         }
 
-        msg.innerText = "You're on the waitlist 🚀";
-      } catch (err) {
-        msg.innerText = "Network error. Please try again.";
+        msg.textContent = "✅ You’re on the list!";
+        msg.style.color = "#6ee7b7";
+        document.getElementById("email").value = "";
+
+      } catch (e) {
+        msg.textContent = "❌ Something went wrong. Try again.";
+        msg.style.color = "#f87171";
       }
-    });
+    }
   </script>
 
 </body>
