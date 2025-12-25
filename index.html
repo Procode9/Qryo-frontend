@@ -2,109 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Qryo – Compute Without Infrastructure</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qryo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
     body {
       margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #1e293b, #020617);
-      color: #e5e7eb;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 100vh;
     }
 
     .container {
-      max-width: 640px;
-      padding: 48px;
-      border-radius: 24px;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
       text-align: center;
+      max-width: 520px;
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
-
-    .highlight {
-      background: linear-gradient(90deg, #38bdf8, #2563eb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 48px;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
     }
 
     p {
-      font-size: 1.05rem;
-      color: #cbd5f5;
+      color: #b3b3b3;
       margin-bottom: 32px;
-      line-height: 1.6;
+      font-size: 18px;
     }
 
-    button {
-      padding: 14px 28px;
-      font-size: 1rem;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
       border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-      color: white;
-      font-weight: 600;
-      box-shadow: 0 16px 40px rgba(59,130,246,.45);
-      transition: transform .2s ease, box-shadow .2s ease;
+      font-size: 14px;
+      font-weight: 500;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
     }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 60px rgba(59,130,246,.6);
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #666;
     }
 
-    .status {
-      margin-top: 28px;
-      font-size: 0.9rem;
-      color: #94a3b8;
+    .dot.live {
+      background: #00ff9c;
+      box-shadow: 0 0 8px #00ff9c;
     }
 
-    footer {
-      margin-top: 36px;
-      font-size: 0.75rem;
-      color: #64748b;
+    .dot.down {
+      background: #ff4d4f;
+      box-shadow: 0 0 8px #ff4d4f;
     }
   </style>
 </head>
-
 <body>
+
   <div class="container">
-    <h1>
-      Run Compute Jobs  
-      <span class="highlight">Without Infrastructure</span>
-    </h1>
+    <h1>Qryo</h1>
+    <p>Cloud quantum access, simplified.</p>
 
-    <p>
-      Submit, estimate and execute compute workloads on demand.  
-      No servers. No setup. Pay only for what you use.
-    </p>
-
-    <button onclick="alert('Early access coming soon')">
-      Request Early Access
-    </button>
-
-    <div class="status" id="status">
-      Production-ready backend connected
+    <div class="badge">
+      <span id="status-dot" class="dot"></span>
+      <span id="status-text">Checking backend…</span>
     </div>
-
-    <footer>
-      © 2025 — Built for researchers, developers & teams
-    </footer>
   </div>
+
+  <script>
+    const BACKEND_URL = "https://qryo-backend.onrender.com";
+
+    async function checkBackend() {
+      try {
+        const res = await fetch(BACKEND_URL, { method: "GET" });
+        if (res.ok) {
+          document.getElementById("status-dot").classList.add("live");
+          document.getElementById("status-text").innerText = "Backend live";
+        } else {
+          throw new Error("Not OK");
+        }
+      } catch (err) {
+        document.getElementById("status-dot").classList.add("down");
+        document.getElementById("status-text").innerText = "Backend offline";
+      }
+    }
+
+    checkBackend();
+  </script>
+
 </body>
 </html>
