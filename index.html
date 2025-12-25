@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +16,7 @@
       --border: #1f2430;
       --card: #0f1420;
       --chip: #141a2b;
+      --danger: #ff7a7a;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -93,7 +93,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 32px;
       margin-top: 32px;
     }
@@ -136,6 +136,12 @@
       margin-top: 6px;
     }
 
+    .score {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding-top: 32px;
@@ -160,7 +166,7 @@
         Discover what matters <strong>before it becomes obvious</strong>.
         <br />
         A signal-first platform for identifying early-stage opportunities
-        long before markets, trends, or competitors notice them.
+        long before markets notice them.
       </p>
 
       <a href="#early-access" class="cta">Get Early Access</a>
@@ -169,15 +175,9 @@
     <!-- WHY -->
     <section>
       <h2>Why it exists</h2>
-
       <p>
-        Most platforms analyze the <strong>present</strong>.
-        Most decisions are based on the <strong>past</strong>.
-      </p>
-
-      <p>
-        Start QuAntUm is built for the moment <em>before both</em> —
-        when signals are still weak, unnamed, and mispriced.
+        Most platforms analyze the present.
+        Start QuAntUm is built for the moment <em>before</em> signals become obvious.
       </p>
     </section>
 
@@ -185,21 +185,13 @@
     <section>
       <h2>How discovery works</h2>
 
-      <p>
-        Start QuAntUm follows a simple but powerful discovery loop.
-        Signal → meaning → readiness.
-      </p>
-
       <div class="grid">
         <div class="card">
           <div class="step">
             <div class="step-number">1</div>
             <h3>Signal Capture</h3>
           </div>
-          <p>
-            Weak, early signals are captured across emerging domains —
-            before language stabilizes and before patterns are obvious.
-          </p>
+          <p>Weak, early signals captured before language stabilizes.</p>
         </div>
 
         <div class="card">
@@ -207,11 +199,7 @@
             <div class="step-number">2</div>
             <h3>Signal Compression</h3>
           </div>
-          <p>
-            Noise is removed.
-            Repetition is collapsed.
-            Only the smallest meaningful unit of change remains.
-          </p>
+          <p>Noise removed. Only meaningful change remains.</p>
         </div>
 
         <div class="card">
@@ -219,86 +207,70 @@
             <div class="step-number">3</div>
             <h3>Insight Readiness</h3>
           </div>
-          <p>
-            Signals are ranked by asymmetry —
-            how early they are versus how large their potential impact is.
-          </p>
+          <p>Signals ranked by timing vs impact asymmetry.</p>
         </div>
       </div>
     </section>
 
-    <!-- STEP 3: WHAT YOU GET -->
+    <!-- STEP 4: EXAMPLE SIGNALS -->
     <section>
-      <h2>What you actually get</h2>
+      <h2>Example early signals</h2>
 
       <p>
-        Not raw data. Not dashboards full of noise.
-        Start QuAntUm delivers <strong>decision-ready discovery outputs</strong>.
+        Below are <strong>mock examples</strong> of how Start QuAntUm surfaces
+        early-stage signals — before they have names, markets, or categories.
       </p>
 
       <div class="grid">
+
         <div class="card">
-          <h3>Signal Cards</h3>
+          <h3>Non-Deterministic Workflow Design</h3>
           <p>
-            Each emerging signal is distilled into a single, readable unit:
-            what it is, why it matters, and why it’s early.
+            A rise in systems designed to behave probabilistically instead of deterministically,
+            especially in AI-assisted decision pipelines.
           </p>
-          <span class="chip">early-stage</span>
-          <span class="chip">weak signals</span>
-          <span class="chip">asymmetry</span>
+          <span class="chip">AI systems</span>
+          <span class="chip">workflow design</span>
+          <span class="chip">early infra</span>
+          <div class="score">Opportunity Readiness: 8.4 / 10</div>
         </div>
 
         <div class="card">
-          <h3>Discovery Feed</h3>
+          <h3>Local-First Cognitive Tools</h3>
           <p>
-            A continuously updating stream of ranked signals —
-            filtered for novelty, momentum, and cross-domain relevance.
+            Growing interest in tools that keep reasoning, memory,
+            and inference entirely on-device rather than in the cloud.
           </p>
-          <span class="chip">ranked</span>
-          <span class="chip">cross-domain</span>
-          <span class="chip">low noise</span>
+          <span class="chip">privacy</span>
+          <span class="chip">edge compute</span>
+          <span class="chip">personal AI</span>
+          <div class="score">Opportunity Readiness: 7.9 / 10</div>
         </div>
 
         <div class="card">
-          <h3>Opportunity Readiness Score</h3>
+          <h3>Latency-Aware Product Pricing</h3>
           <p>
-            Each signal is scored by how early it is
-            relative to its potential future impact.
+            Early experiments where software pricing dynamically changes
+            based on system response time and computational cost.
           </p>
-          <span class="chip">timing</span>
-          <span class="chip">impact</span>
-          <span class="chip">decision-ready</span>
+          <span class="chip">pricing models</span>
+          <span class="chip">infra economics</span>
+          <span class="chip">unexplored</span>
+          <div class="score">Opportunity Readiness: 8.7 / 10</div>
         </div>
+
       </div>
-    </section>
-
-    <!-- WHO -->
-    <section>
-      <h2>Who it’s for</h2>
-
-      <p>
-        Builders, founders, investors, and researchers who care about
-        <strong>being early for the right reasons</strong>.
-      </p>
     </section>
 
     <!-- CTA -->
     <section id="early-access">
       <h2>Join the Discovery Layer</h2>
-
-      <p>
-        Get early access and help shape how future opportunities
-        are discovered.
-      </p>
-
+      <p>Be early — for the right reasons.</p>
       <a href="#" class="cta">Request Access</a>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-      <p>
-        © 2025 <span>Start QuAntUm</span> — Discovery before it’s obvious.
-      </p>
+      <p>© 2025 <span>Start QuAntUm</span> — Discovery before it’s obvious.</p>
     </footer>
 
   </div>
