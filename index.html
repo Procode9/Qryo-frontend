@@ -13,11 +13,10 @@
       --muted: #b3b3b3;
       --border: #2a2a2a;
       --accent: #00ff9c;
+      --danger: #ff4d4f;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -25,14 +24,12 @@
       background: var(--bg);
       color: var(--text);
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
+      padding: 32px 20px;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 760px;
       width: 100%;
       text-align: center;
     }
@@ -46,7 +43,7 @@
     .subtitle {
       font-size: 20px;
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .badge {
@@ -56,10 +53,9 @@
       padding: 8px 14px;
       border-radius: 999px;
       font-size: 14px;
-      font-weight: 500;
       background: var(--card);
       border: 1px solid var(--border);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .dot {
@@ -75,13 +71,13 @@
     }
 
     .dot.down {
-      background: #ff4d4f;
-      box-shadow: 0 0 8px #ff4d4f;
+      background: var(--danger);
+      box-shadow: 0 0 8px var(--danger);
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-bottom: 40px;
     }
@@ -106,6 +102,76 @@
       line-height: 1.5;
     }
 
+    /* CTA */
+    .cta {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+
+    .cta h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .cta p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta input {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0f0f0f;
+      color: var(--text);
+      min-width: 220px;
+    }
+
+    .cta button {
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* API Showcase */
+    .api {
+      background: #0f0f0f;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .api h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    pre {
+      background: #000;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 13px;
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+
     .footer {
       font-size: 13px;
       color: var(--muted);
@@ -115,70 +181,85 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Qryo</h1>
-    <div class="subtitle">
-      Programmable access to next-generation compute.
+<div class="container">
+  <h1>Qryo</h1>
+  <div class="subtitle">
+    Programmable access to next-generation compute.
+  </div>
+
+  <!-- Backend Status -->
+  <div class="badge">
+    <span id="status-dot" class="dot"></span>
+    <span id="status-text">Checking backend…</span>
+  </div>
+
+  <!-- Value -->
+  <div class="cards">
+    <div class="card">
+      <h3>What</h3>
+      <p>Abstract complex compute systems into clean, production-ready APIs.</p>
     </div>
-
-    <!-- Backend status -->
-    <div class="badge">
-      <span id="status-dot" class="dot"></span>
-      <span id="status-text">Checking backend…</span>
+    <div class="card">
+      <h3>Why</h3>
+      <p>Powerful infrastructure shouldn’t require infrastructure teams.</p>
     </div>
-
-    <!-- What / Why / For whom -->
-    <div class="cards">
-      <div class="card">
-        <h3>What</h3>
-        <p>
-          A lightweight API layer that abstracts complex compute systems
-          into simple, production-ready endpoints.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Why</h3>
-        <p>
-          Advanced compute is powerful but inaccessible.
-          Qryo removes friction without hiding capability.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>For whom</h3>
-        <p>
-          Builders, researchers, and teams who need power
-          without infrastructure overhead.
-        </p>
-      </div>
-    </div>
-
-    <div class="footer">
-      Early access · Infrastructure live · Iterating fast
+    <div class="card">
+      <h3>For whom</h3>
+      <p>Builders and researchers shipping fast with minimal overhead.</p>
     </div>
   </div>
 
-  <script>
-    const BACKEND_URL = "https://qryo-backend.onrender.com";
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Get early access</h2>
+    <p>Join the private rollout. No spam. No noise.</p>
+    <form onsubmit="event.preventDefault(); alert('Thanks! You are on the list.');">
+      <input type="email" placeholder="you@company.com" required />
+      <button type="submit">Request access</button>
+    </form>
+  </div>
 
-    async function checkBackend() {
-      try {
-        const res = await fetch(BACKEND_URL, { method: "GET" });
-        if (res.ok) {
-          document.getElementById("status-dot").classList.add("live");
-          document.getElementById("status-text").innerText = "Backend live";
-        } else {
-          throw new Error("Not OK");
-        }
-      } catch (err) {
-        document.getElementById("status-dot").classList.add("down");
-        document.getElementById("status-text").innerText = "Backend offline";
-      }
-    }
+  <!-- API Showcase -->
+  <div class="api">
+    <h3>Example API</h3>
+    <pre>
+POST /v1/jobs
+Authorization: Bearer YOUR_API_KEY
 
-    checkBackend();
-  </script>
+{
+  "type": "optimization",
+  "provider": "cloud-quantum",
+  "payload": {
+    "nodes": 128,
+    "constraints": 42
+  }
+}
+    </pre>
+  </div>
+
+  <div class="footer">
+    Infrastructure live · API-first · Iterating fast
+  </div>
+</div>
+
+<script>
+const BACKEND_URL = "https://qryo-backend.onrender.com";
+
+async function checkBackend() {
+  try {
+    const res = await fetch(BACKEND_URL);
+    if (res.ok) {
+      document.getElementById("status-dot").classList.add("live");
+      document.getElementById("status-text").innerText = "Backend live";
+    } else throw new Error();
+  } catch {
+    document.getElementById("status-dot").classList.add("down");
+    document.getElementById("status-text").innerText = "Backend offline";
+  }
+}
+
+checkBackend();
+</script>
 
 </body>
 </html>
