@@ -1,19 +1,21 @@
-const API_BASE = "https://qryo-backend.onrender.com";
+const button = document.getElementById("checkBtn");
+const statusEl = document.getElementById("status");
 
-async function checkBackend() {
-  const statusEl = document.getElementById("status");
+const BACKEND_URL = "https://qryo-backend.onrender.com";
+
+button.addEventListener("click", async () => {
   statusEl.textContent = "Checking backend...";
+  statusEl.style.color = "#94a3b8";
 
   try {
-    const res = await fetch(API_BASE);
-    const data = await res.json();
+    const res = await fetch(`${BACKEND_URL}/health`);
+    if (!res.ok) throw new Error("Not OK");
 
-    statusEl.textContent = "Backend OK ✅";
+    const data = await res.json();
+    statusEl.textContent = `Backend online ✓ (${data.status})`;
     statusEl.style.color = "#22c55e";
   } catch (err) {
-    statusEl.textContent = "Backend not reachable ❌";
+    statusEl.textContent = "Backend unreachable ✕";
     statusEl.style.color = "#ef4444";
   }
-}
-
-document.getElementById("checkBtn").addEventListener("click", checkBackend);
+});
