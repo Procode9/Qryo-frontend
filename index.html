@@ -14,13 +14,10 @@
       --muted: #9aa3b2;
       --accent: #6cf2c2;
       --border: #1f2430;
+      --card: #0f1420;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -36,9 +33,7 @@
       padding: 64px 24px;
     }
 
-    header {
-      margin-bottom: 96px;
-    }
+    header { margin-bottom: 96px; }
 
     .logo {
       font-weight: 600;
@@ -53,11 +48,27 @@
       margin-bottom: 24px;
     }
 
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
     .subtitle {
       font-size: 1.2rem;
       color: var(--muted);
       max-width: 720px;
       margin-bottom: 48px;
+    }
+
+    p {
+      max-width: 760px;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
 
     .cta {
@@ -76,39 +87,40 @@
       opacity: 0.9;
     }
 
-    section {
-      margin-bottom: 96px;
-    }
+    section { margin-bottom: 96px; }
 
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-    }
-
-    p {
-      max-width: 760px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .features {
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 32px;
       margin-top: 32px;
     }
 
-    .feature {
-      padding: 24px;
+    .card {
+      padding: 28px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: #0f1420;
+      background: var(--card);
     }
 
-    .feature h3 {
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-      color: var(--fg);
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(108, 242, 194, 0.15);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
 
     footer {
@@ -118,9 +130,7 @@
       font-size: 0.9rem;
     }
 
-    footer span {
-      color: var(--accent);
-    }
+    footer span { color: var(--accent); }
   </style>
 </head>
 
@@ -131,9 +141,7 @@
     <header>
       <div class="logo">START QUANTUM</div>
 
-      <h1>
-        Start QuAntUm Discovery
-      </h1>
+      <h1>Start QuAntUm Discovery</h1>
 
       <p class="subtitle">
         Discover what matters <strong>before it becomes obvious</strong>.
@@ -160,32 +168,48 @@
       </p>
     </section>
 
-    <!-- WHAT MAKES IT DIFFERENT -->
+    <!-- STEP 2: HOW IT WORKS -->
     <section>
-      <h2>What makes it different</h2>
+      <h2>How discovery works</h2>
 
-      <div class="features">
-        <div class="feature">
-          <h3>Early Signal Detection</h3>
+      <p>
+        Start QuAntUm follows a simple but powerful discovery loop.
+        No dashboards full of noise. No overfitting.
+        Just signal → meaning → action.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Signal Capture</h3>
+          </div>
           <p>
-            Surface weak signals before they evolve into obvious trends
-            or crowded markets.
+            Weak, early signals are captured across emerging domains —
+            before terminology stabilizes and before patterns are obvious.
           </p>
         </div>
 
-        <div class="feature">
-          <h3>Noise-to-Insight Filtering</h3>
+        <div class="card">
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Signal Compression</h3>
+          </div>
           <p>
-            Remove hype and repetition.
-            Focus only on signals that actually compound.
+            Noise is removed.
+            Repetition is collapsed.
+            What remains is the smallest meaningful unit of change.
           </p>
         </div>
 
-        <div class="feature">
-          <h3>Pre-Market Discovery</h3>
+        <div class="card">
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Insight Readiness</h3>
+          </div>
           <p>
-            Explore opportunities before they are named,
-            categorized, or monetized.
+            Signals are ranked by asymmetry —
+            how early they are versus how large their potential impact is.
           </p>
         </div>
       </div>
