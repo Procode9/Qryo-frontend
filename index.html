@@ -196,6 +196,39 @@
     Built by QRYO Engineering · Privacy-first ·
     <a href="mailto:hello@qryo.dev">hello@qryo.dev</a>
   </footer>
+<script>
+  // Basic client-side analytics (privacy-first)
+  (function () {
+    const payload = {
+      event: "page_view",
+      path: window.location.pathname,
+      referrer: document.referrer || null,
+      ua: navigator.userAgent
+    };
 
+    fetch("https://qryo-backend.onrender.com/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  })();
+
+  // Track API docs click
+  document.addEventListener("DOMContentLoaded", () => {
+    const link = document.querySelector('a[href*="/docs"]');
+    if (!link) return;
+
+    link.addEventListener("click", () => {
+      fetch("https://qryo-backend.onrender.com/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "docs_click",
+          path: window.location.pathname
+        })
+      }).catch(() => {});
+    });
+  });
+</script>
 </body>
 </html>
