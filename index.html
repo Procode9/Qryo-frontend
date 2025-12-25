@@ -1,21 +1,79 @@
-const button = document.getElementById("checkBtn");
-const statusEl = document.getElementById("status");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qryo</title>
 
-const BACKEND_URL = "https://qryo-backend.onrender.com";
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-button.addEventListener("click", async () => {
-  statusEl.textContent = "Checking backend...";
-  statusEl.style.color = "#94a3b8";
+    .container {
+      text-align: center;
+      max-width: 420px;
+      padding: 32px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    }
 
-  try {
-    const res = await fetch(`${BACKEND_URL}/health`);
-    if (!res.ok) throw new Error("Not OK");
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
 
-    const data = await res.json();
-    statusEl.textContent = `Backend online ✓ (${data.status})`;
-    statusEl.style.color = "#22c55e";
-  } catch (err) {
-    statusEl.textContent = "Backend unreachable ✕";
-    statusEl.style.color = "#ef4444";
-  }
-});
+    p {
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #022c22;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.35);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(34, 197, 94, 0.45);
+    }
+
+    #status {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      min-height: 1.2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Qryo</h1>
+    <p>Quantum job orchestration — simplified.</p>
+
+    <!-- ADIM 5.3 -->
+    <button id="checkBtn">Check Backend</button>
+    <p id="status"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
