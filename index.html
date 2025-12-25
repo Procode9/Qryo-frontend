@@ -2,277 +2,200 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Start QuAntUm Discovery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QRYO — Quantum Job Aggregator</title>
 
-  <meta name="description" content="Discover early-stage signals before they become obvious. Start QuAntUm Discovery surfaces what matters before markets notice.">
+  <meta name="description" content="Run quantum jobs from a single, vendor-agnostic API. No infrastructure. No lock-in." />
 
   <style>
-    :root {
-      --bg: #0b0e14;
-      --fg: #e6e8ee;
-      --muted: #9aa3b2;
-      --accent: #6cf2c2;
-      --border: #1f2430;
-      --card: #0f1420;
-      --chip: #141a2b;
-      --danger: #ff7a7a;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      background: #0b0e14;
+      color: #e6e6e6;
       line-height: 1.6;
     }
 
+    a { color: #7aa2ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 24px;
+      max-width: 960px;
+      margin: auto;
+      padding: 2.5rem 1.25rem;
     }
 
-    header { margin-bottom: 96px; }
-
-    .logo {
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--accent);
-      margin-bottom: 48px;
+    header {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
     }
 
     h1 {
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
-      line-height: 1.1;
-      margin-bottom: 24px;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
 
     h2 {
       font-size: 1.6rem;
-      margin-bottom: 16px;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
     }
 
-    h3 {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
+    p {
+      max-width: 700px;
+      color: #cfd3ff;
     }
 
     .subtitle {
       font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
-
-    p {
-      max-width: 760px;
-      color: var(--muted);
-      margin-bottom: 16px;
+      color: #9aa4ff;
+      margin-bottom: 2rem;
     }
 
     .cta {
+      margin-top: 2rem;
+    }
+
+    .cta a {
       display: inline-block;
-      padding: 14px 28px;
+      padding: 0.75rem 1.4rem;
+      border: 1px solid #7aa2ff;
       border-radius: 6px;
-      background: var(--accent);
-      color: #08110d;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      font-weight: 500;
     }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
-
-    section { margin-bottom: 96px; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-      margin-top: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .card {
-      padding: 28px;
-      border: 1px solid var(--border);
+      background: #121726;
+      border: 1px solid #1e2440;
       border-radius: 8px;
-      background: var(--card);
+      padding: 1.5rem;
     }
 
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: #ffffff;
     }
 
-    .step-number {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(108, 242, 194, 0.15);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
+    .card p {
+      font-size: 0.95rem;
+      color: #b6bcff;
+    }
+
+    .trust {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #1e2440;
       font-size: 0.9rem;
-    }
-
-    .chip {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--chip);
-      color: var(--muted);
-      font-size: 0.75rem;
-      margin-right: 6px;
-      margin-top: 6px;
-    }
-
-    .score {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: var(--accent);
+      color: #9aa4ff;
     }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-      color: var(--muted);
-      font-size: 0.9rem;
+      margin-top: 3rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6f76b8;
     }
-
-    footer span { color: var(--accent); }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
+  <div class="container">
     <!-- HERO -->
     <header>
-      <div class="logo">START QUANTUM</div>
-
-      <h1>Start QuAntUm Discovery</h1>
-
+      <h1>Start Quantum Discovery</h1>
       <p class="subtitle">
-        Discover what matters <strong>before it becomes obvious</strong>.
-        <br />
-        A signal-first platform for identifying early-stage opportunities
-        long before markets notice them.
+        Run quantum jobs from a single, vendor-agnostic API.
       </p>
 
-      <a href="#early-access" class="cta">Get Early Access</a>
+      <p>
+        QRYO is a lightweight quantum job aggregator that lets developers,
+        researchers, and teams submit quantum or quantum-inspired workloads
+        without managing quantum infrastructure.
+      </p>
+
+      <div class="cta">
+        <a href="https://qryo-backend.onrender.com/docs" target="_blank">
+          View API Docs →
+        </a>
+      </div>
     </header>
 
-    <!-- WHY -->
+    <!-- WHAT IT DOES -->
     <section>
-      <h2>Why it exists</h2>
-      <p>
-        Most platforms analyze the present.
-        Start QuAntUm is built for the moment <em>before</em> signals become obvious.
-      </p>
-    </section>
-
-    <!-- HOW -->
-    <section>
-      <h2>How discovery works</h2>
+      <h2>What QRYO Does</h2>
 
       <div class="grid">
         <div class="card">
-          <div class="step">
-            <div class="step-number">1</div>
-            <h3>Signal Capture</h3>
-          </div>
-          <p>Weak, early signals captured before language stabilizes.</p>
+          <h3>Single API</h3>
+          <p>
+            Submit jobs to multiple quantum backends through one consistent API.
+          </p>
         </div>
 
         <div class="card">
-          <div class="step">
-            <div class="step-number">2</div>
-            <h3>Signal Compression</h3>
-          </div>
-          <p>Noise removed. Only meaningful change remains.</p>
+          <h3>Vendor-Agnostic</h3>
+          <p>
+            No lock-in. Route jobs across simulators or quantum-ready providers.
+          </p>
         </div>
 
         <div class="card">
-          <div class="step">
-            <div class="step-number">3</div>
-            <h3>Insight Readiness</h3>
-          </div>
-          <p>Signals ranked by timing vs impact asymmetry.</p>
+          <h3>Infrastructure-Free</h3>
+          <p>
+            No hardware setup, no SDK juggling, no environment headaches.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>API-First</h3>
+          <p>
+            Designed for developers. JSON in, results out.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- STEP 4: EXAMPLE SIGNALS -->
+    <!-- USE CASES -->
     <section>
-      <h2>Example early signals</h2>
-
+      <h2>Who Is This For?</h2>
       <p>
-        Below are <strong>mock examples</strong> of how Start QuAntUm surfaces
-        early-stage signals — before they have names, markets, or categories.
+        Researchers experimenting with quantum algorithms, developers building
+        quantum-aware applications, and teams who want to explore quantum
+        computation without committing to a single provider.
+      </p>
+    </section>
+
+    <!-- TRUST & CREDIBILITY -->
+    <section class="trust">
+      <p>
+        <strong>Who is behind this?</strong><br />
+        Built by an independent engineering team focused on practical quantum infrastructure.
       </p>
 
-      <div class="grid">
-
-        <div class="card">
-          <h3>Non-Deterministic Workflow Design</h3>
-          <p>
-            A rise in systems designed to behave probabilistically instead of deterministically,
-            especially in AI-assisted decision pipelines.
-          </p>
-          <span class="chip">AI systems</span>
-          <span class="chip">workflow design</span>
-          <span class="chip">early infra</span>
-          <div class="score">Opportunity Readiness: 8.4 / 10</div>
-        </div>
-
-        <div class="card">
-          <h3>Local-First Cognitive Tools</h3>
-          <p>
-            Growing interest in tools that keep reasoning, memory,
-            and inference entirely on-device rather than in the cloud.
-          </p>
-          <span class="chip">privacy</span>
-          <span class="chip">edge compute</span>
-          <span class="chip">personal AI</span>
-          <div class="score">Opportunity Readiness: 7.9 / 10</div>
-        </div>
-
-        <div class="card">
-          <h3>Latency-Aware Product Pricing</h3>
-          <p>
-            Early experiments where software pricing dynamically changes
-            based on system response time and computational cost.
-          </p>
-          <span class="chip">pricing models</span>
-          <span class="chip">infra economics</span>
-          <span class="chip">unexplored</span>
-          <div class="score">Opportunity Readiness: 8.7 / 10</div>
-        </div>
-
-      </div>
+      <p>
+        <strong>Why trust this?</strong><br />
+        API-first. Privacy-first. No tracking. No spam.
+      </p>
     </section>
-
-    <!-- CTA -->
-    <section id="early-access">
-      <h2>Join the Discovery Layer</h2>
-      <p>Be early — for the right reasons.</p>
-      <a href="#" class="cta">Request Access</a>
-    </section>
-
-    <footer>
-      <p>© 2025 <span>Start QuAntUm</span> — Discovery before it’s obvious.</p>
-    </footer>
-
   </div>
+
+  <!-- FOOTER -->
+  <footer>
+    Built by QRYO Engineering · Privacy-first ·
+    <a href="mailto:hello@qryo.dev">hello@qryo.dev</a>
+  </footer>
+
 </body>
 </html>
