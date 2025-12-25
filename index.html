@@ -6,32 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #121212;
+      --text: #ffffff;
+      --muted: #b3b3b3;
+      --border: #2a2a2a;
+      --accent: #00ff9c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0b0b0b;
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 24px;
     }
 
     .container {
+      max-width: 720px;
+      width: 100%;
       text-align: center;
-      max-width: 520px;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 12px;
-      letter-spacing: -1px;
+      font-size: 56px;
+      margin: 0 0 12px;
+      letter-spacing: -1.5px;
     }
 
-    p {
-      color: #b3b3b3;
+    .subtitle {
+      font-size: 20px;
+      color: var(--muted);
       margin-bottom: 32px;
-      font-size: 18px;
     }
 
     .badge {
@@ -42,8 +57,9 @@
       border-radius: 999px;
       font-size: 14px;
       font-weight: 500;
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
+      background: var(--card);
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
     }
 
     .dot {
@@ -54,13 +70,46 @@
     }
 
     .dot.live {
-      background: #00ff9c;
-      box-shadow: 0 0 8px #00ff9c;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
     }
 
     .dot.down {
       background: #ff4d4f;
       box-shadow: 0 0 8px #ff4d4f;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .footer {
+      font-size: 13px;
+      color: var(--muted);
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -68,11 +117,45 @@
 
   <div class="container">
     <h1>Qryo</h1>
-    <p>Cloud quantum access, simplified.</p>
+    <div class="subtitle">
+      Programmable access to next-generation compute.
+    </div>
 
+    <!-- Backend status -->
     <div class="badge">
       <span id="status-dot" class="dot"></span>
       <span id="status-text">Checking backend…</span>
+    </div>
+
+    <!-- What / Why / For whom -->
+    <div class="cards">
+      <div class="card">
+        <h3>What</h3>
+        <p>
+          A lightweight API layer that abstracts complex compute systems
+          into simple, production-ready endpoints.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Why</h3>
+        <p>
+          Advanced compute is powerful but inaccessible.
+          Qryo removes friction without hiding capability.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>For whom</h3>
+        <p>
+          Builders, researchers, and teams who need power
+          without infrastructure overhead.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      Early access · Infrastructure live · Iterating fast
     </div>
   </div>
 
