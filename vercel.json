@@ -1,46 +1,11 @@
 {
   "version": 2,
-
+  "builds": [
+    { "src": "frontend/**", "use": "@vercel/static" }
+  ],
   "routes": [
-    {
-      "src": "^/$",
-      "dest": "/frontend/index.html"
-    },
-    {
-      "src": "^/(.*)",
-      "dest": "/frontend/$1"
-    }
-  ],
-
-  "headers": [
-    {
-      "source": "/frontend/(.*)\\.css",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/frontend/(.*)\\.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/frontend/index.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ],
-
-  "cleanUrls": true
+    { "src": "^/$", "dest": "frontend/index.html" },
+    { "src": "^/assets/(.*)$", "dest": "frontend/assets/$1" },
+    { "src": "^(.*)$", "dest": "frontend/index.html" }
+  ]
 }
