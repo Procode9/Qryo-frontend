@@ -17,6 +17,7 @@ export default function App() {
           <Route path="/jobs/:id" element={<JobDetail />} />
           <Route path="/new" element={<NewExperiment />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/run" element={<RunJob />} />
         </Route>
       </Routes>
     </BrowserRouter>
