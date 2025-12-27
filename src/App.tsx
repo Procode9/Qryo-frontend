@@ -3,7 +3,6 @@ import { RequireAuth } from "./auth/auth.guard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Jobs from "./pages/Jobs";
-import JobDetail from "./pages/JobDetail";
 
 export default function App() {
   return (
