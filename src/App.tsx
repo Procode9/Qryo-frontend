@@ -5,6 +5,7 @@ import Jobs from "./pages/Jobs";
 import NewExperiment from "./pages/NewExperiment";
 import JobDetail from "./pages/JobDetail";
 import NotFound from "./pages/NotFound";
+import RunJob from "./pages/RunJob";
 
 export default function App() {
   return (
