@@ -7,14 +7,8 @@ import JobDetail from "./pages/JobDetail";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/jobs" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/jobs" element={<JobList />} />
-        <Route path="/jobs/:jobId" element={<JobDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <div style={{ padding: 40, color: "black" }}>
+      <h1>Qryo Frontend is running ✅</h1>
+    </div>
   );
 }
